@@ -35,7 +35,7 @@ resource "aws_security_group" "ukds_geoconvert_database_security_group" {
 }
 
 resource "aws_ssm_parameter" "db_password" {
-    name    = "db_password_${var.environment}"
+    name    = "geoconvert_db_password_${var.environment}"
     type    = "String"
     value   = var.db_password
 }
