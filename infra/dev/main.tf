@@ -1,8 +1,8 @@
 locals {
     environment             = "dev"
-    project                 = "Census Platform"
+    project                 = "GeoConvert"
     aws_region              = "eu-west-1"
-    db_name                 = "ukdscensusplatformdev"
+    db_name                 = "geoconvertdev"
     db_allocated_storage    = 200
     db_instance_class       = "db.t2.small"
     ec2_key_name            = "ukds"
@@ -11,17 +11,17 @@ locals {
         "193.62.83.115/32",     // vpn
         "194.81.3.15/32",       // vpn
         "194.81.3.16/32",       // vpn
-        "10.0.3.0/24",          // Private Subnet
-        "10.0.2.0/24",          // Private Subnet
-        "10.0.1.0/24",          // Private Subnet
-        "10.0.101.0/24",        // Public Subnet
-        "10.0.102.0/24",        // Public Subnet
-        "10.0.103.0/24"         // Public Subnet
+        "10.10.1.0/24",          // Private Subnet
+        "10.10.2.0/24",          // Private Subnet
+        "10.10.3.0/24",          // Private Subnet
+        "10.10.101.0/24",        // Public Subnet
+        "10.10.102.0/24",        // Public Subnet
+        "10.10.103.0/24"         // Public Subnet
     ]
     database_subnets = [
-        "10.0.30.0/24",
-        "10.0.31.0/24",
-        "10.0.32.0/24"
+        "10.10.30.0/24",
+        "10.10.31.0/24",
+        "10.10.32.0/24"
     ]
 }
 
@@ -33,9 +33,9 @@ resource "random_id" "random_16" {
 
 module "network" {
     source              = "../modules/network"
-    cidr_block          = "10.0.0.0/16"
-    public_subnets      = ["10.0.0.0/24", "10.0.1.0/24", "10.0.2.0/24"]
-    private_subnets     = ["10.0.100.0/24", "10.0.101.0/24", "10.0.102.0/24"]
+    cidr_block          = "10.10.0.0/16"
+    public_subnets      = ["10.10.0.0/24", "10.10.1.0/24", "10.10.2.0/24"]
+    private_subnets     = ["10.10.100.0/24", "10.10.101.0/24", "10.10.102.0/24"]
     azs = data.aws_availability_zones.available.names
     environment = local.environment
 }
