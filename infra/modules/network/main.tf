@@ -3,7 +3,7 @@ resource "aws_vpc" "main" {
     enable_dns_support      = true
     enable_dns_hostnames    = true
     tags = {
-        Name = "${var.environment}_census_platform_vpc"
+        Name = "${var.environment}_geoconvert_vpc"
     }
 }
 
@@ -15,7 +15,7 @@ resource "aws_subnet" "public_1" {
     assign_ipv6_address_on_creation = false
 
     tags = {
-        Name = "${var.environment}_census_platform_public_subnet_1"
+        Name = "${var.environment}_geoconvert_public_subnet_1"
     }
 }
 
@@ -27,7 +27,7 @@ resource "aws_subnet" "public_2" {
     assign_ipv6_address_on_creation = false
 
     tags = {
-        Name = "${var.environment}_census_platform_public_subnet_2"
+        Name = "${var.environment}_geoconvert_public_subnet_2"
     }
 }
 
@@ -39,7 +39,7 @@ resource "aws_subnet" "public_3" {
     assign_ipv6_address_on_creation = false
 
     tags = {
-        Name = "${var.environment}_census_platform_public_subnet_3"
+        Name = "${var.environment}_geoconvert_public_subnet_3"
     }
 }
 
@@ -51,7 +51,7 @@ resource "aws_subnet" "private_1" {
     assign_ipv6_address_on_creation = false
 
     tags = {
-        Name = "${var.environment}_census_platform_private_subnet_1"
+        Name = "${var.environment}_geoconvert_private_subnet_1"
     }
 }
 
@@ -63,7 +63,7 @@ resource "aws_subnet" "private_2" {
     assign_ipv6_address_on_creation = false
 
     tags = {
-        Name = "${var.environment}_census_platform_private_subnet_2"
+        Name = "${var.environment}_geoconvert_private_subnet_2"
     }
 }
 
@@ -75,7 +75,7 @@ resource "aws_subnet" "private_3" {
     assign_ipv6_address_on_creation = false
 
     tags = {
-        Name = "${var.environment}_census_platform_private_subnet_3"
+        Name = "${var.environment}_geoconvert_private_subnet_3"
     }
 }
 
