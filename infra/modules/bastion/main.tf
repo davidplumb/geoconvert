@@ -6,7 +6,7 @@ locals {
         module_name = "postgres_rds"
         directorate = "Software Group"
         team        = "0 - 3 Year Innovation"
-        Project     = "UKDS Census Platform"
+        Project     = "UKDS GeoConvert"
     }
 }
 
