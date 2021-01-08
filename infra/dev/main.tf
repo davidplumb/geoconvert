@@ -2,7 +2,7 @@ locals {
     environment             = "dev"
     project                 = "GeoConvert"
     aws_region              = "eu-west-1"
-    db_name                 = "geoconvertdev"
+    db_name                 = "ukdsgeoconvertdev"
     db_allocated_storage    = 200
     db_instance_class       = "db.t2.small"
     ec2_key_name            = "ukds"
@@ -48,7 +48,6 @@ module "network" {
 #     environment     = local.environment
 #     ec2_key_name    = local.ec2_key_name
 # }
-
 
 module "postgres" {
     source                  = "../modules/postgres"

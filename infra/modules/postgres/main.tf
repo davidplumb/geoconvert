@@ -1,11 +1,11 @@
 locals {
     tags = {
-        Terraform   = "true"
-        Environment = var.environment
+        terraform   = "true"
+        environment = var.environment
         module_name = "postgres_rds"
         directorate = "Software Group"
-        team        = "0 - 3 Year Innovation"
-        Project     = "UKDS GeoConvert"
+        team        = "0-3 Year Innovation"
+        project     = "UKDS GeoConvert"
     }
 }
 
@@ -55,12 +55,12 @@ resource "aws_db_instance" "default" {
     vpc_security_group_ids  = [aws_security_group.ukds_geoconvert_database_security_group.id]
     db_subnet_group_name    = aws_db_subnet_group.ukds_geoconvert_database_subnet.name
     tags = {
-        Name        = var.db_name
-        Terraform   = "true"
-        Environment = var.environment
+        name        = var.db_name
+        terraform   = "true"
+        environment = var.environment
         module_name = "postgres_rds"
         directorate = "Software Group"
-        team        = "0 - 3 Year Innovation"
-        Project     = "UKDS GeoConvert"
+        team        = "0-3 Year Innovation"
+        project     = "UKDS GeoConvert"
     }
 }
