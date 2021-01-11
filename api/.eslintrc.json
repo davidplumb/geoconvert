@@ -1,0 +1,27 @@
+{
+    "extends": ["airbnb", "plugin:prettier/recommended"],
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "jest": true,
+        "node": true
+    },
+    "rules": {
+        "semi": 2,
+        "sort-keys": "error",
+        "max-params": [2],
+        "max-len": [
+            "warn",
+            {
+                "code": 120,
+                "comments": 120,
+                "ignoreComments": false,
+                "ignoreTrailingComments": true,
+                "ignoreUrls": true,
+                "ignoreStrings": true,
+                "ignoreTemplateLiterals": true,
+                "ignoreRegExpLiterals": true
+            }
+        ]
+    }
+  }

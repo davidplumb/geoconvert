@@ -1,0 +1,40 @@
+service: ukds-geoconvert-api
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-warmup
+
+provider:
+  name: aws
+  timeout: 30
+  runtime: nodejs12.x
+  region: eu-west-1
+  stage: ${opt:stage, 'dev'}
+  profile: ukds-geoconvert
+  environment:
+    db_password: ${ssm:/geoconvert_db_password_${self:provider.stage}}
+    stage: ${self:provider.stage}
+  deploymentBucket:
+    tags:
+      Project: UKDS GeoConvert
+      Owner: 0-3 Years Team
+      Name: UKDS GeoConvert API
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+       - 'lambda:InvokeFunction'
+      Resource: "*"
+  vpc:
+    securityGroupIds:
+      - sg-0f28262d42fdaabd3
+    subnetIds:
+      - subnet-024d7eca50c6ea95b
+  functions:
+    helloworld:
+        handler: handler.helloWorld
+        warmup: true
+        events:
+            - http:
+                  path: /hello
+                  method: get
+                  cors: true
