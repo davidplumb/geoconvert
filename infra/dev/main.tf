@@ -31,6 +31,32 @@ resource "random_id" "random_16" {
     byte_length = 16 * 3/4
 }
 
+resource "aws_security_group" "allow_tls" {
+    name        = "terraform_plan"
+    description = "Allow TLS inbound traffic"
+    vpc_id      = module.network.vpc_id
+
+
+    ingress {
+        description = "everyone"
+        from_port   = 443
+        to_port     = 443
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    tags = {
+        Name = "security_group_for_geoconvert_serverless_dev"
+    }
+}
+
 module "network" {
     source              = "../modules/network"
     cidr_block          = "10.10.0.0/16"

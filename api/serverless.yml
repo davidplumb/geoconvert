@@ -24,17 +24,17 @@ provider:
       Action:
        - 'lambda:InvokeFunction'
       Resource: "*"
-  vpc:
-    securityGroupIds:
-      - sg-0f28262d42fdaabd3
-    subnetIds:
-      - subnet-024d7eca50c6ea95b
+  # vpc:
+  #   securityGroupIds:
+  #     - sg-012677d98133cf587
+  #   subnetIds:
+  #     - subnet-024d7eca50c6ea95b
   functions:
     helloworld:
-        handler: handler.helloWorld
-        warmup: true
-        events:
-            - http:
-                  path: /hello
-                  method: get
-                  cors: true
+      handler: handler.helloWorld
+      warmup: true
+      events:
+        - http:
+          path: /hello
+          method: get
+          cors: true
