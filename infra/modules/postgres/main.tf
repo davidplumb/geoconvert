@@ -52,8 +52,8 @@ resource "aws_db_instance" "default" {
     password                              = var.db_password
     publicly_accessible                   = var.publicly_accessible
     parameter_group_name                  = "postgres12-maxwalsize"
-    vpc_security_group_ids  = [aws_security_group.ukds_geoconvert_database_security_group.id]
-    db_subnet_group_name    = aws_db_subnet_group.ukds_geoconvert_database_subnet.name
+    performance_insights_enabled          = true
+    performance_insights_retention_period = 7
     vpc_security_group_ids                = [aws_security_group.ukds_geoconvert_database_security_group.id]
     db_subnet_group_name                  = aws_db_subnet_group.ukds_geoconvert_database_subnet.name
     tags = {
