@@ -8,6 +8,6 @@ const {
 
 module.exports.postcode = async (event) => {
     const {columns, postcodes} = JSON.parse(event.body)
-    const data = await postcode(null, postcodes)
+    const data = await postcode(columns, postcodes)
     return responseJSON(200, data);
 }
