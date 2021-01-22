@@ -11,6 +11,11 @@ module.exports = {
             columns.push('pcstrip15jul')
         }
 
+        var postcodes = postcodes.map(function(e) {
+            e = e.replace(/\s+/g, '');
+            return e;
+        });
+
         const data = await db.any("select ${columns:raw} from dbo.lut_postcode15jul where pcstrip15jul in (${postcodes:csv})", {
             columns: columns.map(pgp.as.name).join(),
             postcodes
