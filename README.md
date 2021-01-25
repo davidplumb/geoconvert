@@ -2,10 +2,13 @@
 
 Create API for [UKDS GeoConvert](http://geoconvert.ukdataservice.ac.uk/).
 
-## Applying PostgreSQL Parameters
+## Applying PostgreSQL Parameters Manually
 
 <details>
   <summary>Click to see more...</summary>
+  
+  It is preferable to set the parameters when creating the database in Terraform.  
+  These are the instructions if you want to do so manually.
   
   ### Login
   
