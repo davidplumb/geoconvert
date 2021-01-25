@@ -40,13 +40,9 @@ Breaking down the example above:
 *LUT_{`geography_1`}{`census_1`}15jul_{`geography_2`}{`census_2`}15jul*
 
 - LUT stands for Look-Up Table (and can be ignored)
-<br />
-<br />
 - DIST stands for Districts
 - 01 stands for the 2001 Census
 - 15jul stands for the version of the database (and can be ignored)
-<br />
-<br />
 - RGN stands for Regions
 - 11 stands for the 2011 Census
 - 15jul stands for the version of the database (and can be ignored again)
