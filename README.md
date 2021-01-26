@@ -64,6 +64,37 @@ The 'propn_1to2' column contains 1 because Gateshead lies fully within the North
 The 'propn_2to1' contains 0.0770989 because Gateshead makes up about 7.7% of the North East along with approximately 22 other districts.
 
 <hr />
+
+## Amendments to Database Tables
+
+### `dbo.index_lut`
+
+New columns added to help filter lookups and identify tables:
+
+- lut_id_lower - *All the proportional lookup tables in the database have lowercase names.*
+- geoginst_1_area - *The geographical layer for the source geography.*
+- geoginst_1_year - *The census year for the source geography.*
+- geoginst_2_area - *The geographical layer for the target geography.*
+- geoginst_2_year - *The census year for the target geography.*
+
+The first column allows tables to be more easily identified.  
+The last four columns help with filtering.
+
+<hr />
+
+### `dbo.index_pdfield`
+
+New column added to help identify columns in `dbo.lut_postcode15jul` (currently required for the API):
+
+- geoginst_lower - *All the columns in `dbo.lut_postcode15jul` have lowercase names.*
+
+<hr />
+
+### `dbo.lut_postcode15jul`
+
+Unique index added to `pcstrip15jul` to optimise postcode searches.
+
+<hr />
 <br />
 
 ### Applying PostgreSQL Parameters Manually
