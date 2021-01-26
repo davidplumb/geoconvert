@@ -7,7 +7,7 @@ const db = () => {
                 database: 'postgres',
                 host: 'ukdsgeoconvertdev.c617xf4dogyp.eu-west-1.rds.amazonaws.com',
                 password: 'PfCoFYvuTJqlsFUq',
-                port: '5432',
+                port: 5432,
                 user: 'postgres'
             });
         case 'dev':
@@ -15,7 +15,7 @@ const db = () => {
                 database: 'postgres',
                 host: 'ukdsgeoconvertdev.c617xf4dogyp.eu-west-1.rds.amazonaws.com',
                 password: 'PfCoFYvuTJqlsFUq',
-                port: '5432',
+                port: 5432,
                 user: 'postgres'
             });
         default:
