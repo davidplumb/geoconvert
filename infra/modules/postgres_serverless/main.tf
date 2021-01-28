@@ -4,7 +4,7 @@ locals {
         Environment = var.environment
         module_name = "postgres_rds"
         directorate = "Software Group"
-        team        = "0 - 3 Year Innovation"
+        team        = "0-3 Year Innovation"
         Project     = "UKDS GeoConvert"
     }
 }
@@ -59,5 +59,4 @@ resource "aws_rds_cluster" "default" {
     }
 
     tags = local.tags
-
 }

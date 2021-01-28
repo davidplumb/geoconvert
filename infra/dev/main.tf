@@ -4,19 +4,20 @@ locals {
     aws_region              = "eu-west-1"
     db_name                 = "ukdsgeoconvertdev"
     db_allocated_storage    = 200
-    db_instance_class       = "db.t2.small"
+    db_instance_class       = "db.t3.small"
     ec2_key_name            = "ukds"
     allowable_ips           = [
-        "193.62.83.114/32",     // vpn
-        "193.62.83.115/32",     // vpn
-        "194.81.3.15/32",       // vpn
-        "194.81.3.16/32",       // vpn
+        "193.62.83.114/32",      // VPN
+        "193.62.83.115/32",      // VPN
+        "194.81.3.15/32",        // VPN
+        "194.81.3.16/32",        // VPN
         "10.10.1.0/24",          // Private Subnet
         "10.10.2.0/24",          // Private Subnet
         "10.10.3.0/24",          // Private Subnet
         "10.10.101.0/24",        // Public Subnet
         "10.10.102.0/24",        // Public Subnet
-        "10.10.103.0/24"         // Public Subnet
+        "10.10.103.0/24",        // Public Subnet
+        "34.252.234.72/32"       // DR-CENSUS-DEV2
     ]
     database_subnets = [
         "10.10.30.0/24",
@@ -29,6 +30,31 @@ data "aws_availability_zones" "available" {}
 
 resource "random_id" "random_16" {
     byte_length = 16 * 3/4
+}
+
+resource "aws_security_group" "allow_tls" {
+    name        = "terraform_plan"
+    description = "Allow TLS inbound traffic"
+    vpc_id      = module.network.vpc_id
+
+    ingress {
+        description = "everyone"
+        from_port   = 443
+        to_port     = 443
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    tags = {
+        Name = "security_group_for_geoconvert_serverless_dev"
+    }
 }
 
 module "network" {
