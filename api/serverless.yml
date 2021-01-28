@@ -31,11 +31,11 @@ provider:
               - 'lambda:InvokeFunction'
           Resource: '*'
 functions:
-  helloWorld:
-    handler: handler.helloWorld
+  postcode:
+    handler: handler.postcode
     warmup: true
     events:
       - http:
-          path: /hello
-          method: get
+          path: /postcode
+          method: POST
           cors: true

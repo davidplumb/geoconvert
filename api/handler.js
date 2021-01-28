@@ -1,11 +1,13 @@
 const {
     responseJSON
-} = require ("./src/lib/response");
+} = require('./src/lib/response');
 
-module.exports.helloWorld = async (event) => {
-    console.log("working");
-    console.log(responseJSON(200, 'asdasd', false));
-    
-    return responseJSON(200, "hello"); 
+const {
+    postcode
+} = require('./src/lib/db');
 
+module.exports.postcode = async (event) => {
+    const {columns, postcodes} = JSON.parse(event.body)
+    const data = await postcode(columns, postcodes)
+    return responseJSON(200, data);
 }
