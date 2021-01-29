@@ -71,11 +71,11 @@ The 'propn_2to1' contains 0.0770989 because Gateshead makes up about 7.7% of the
 
 New columns added to help filter lookups and identify tables:
 
-- lut_id_lower - *All the proportional lookup tables in the database have lowercase names.*
-- geoginst_1_area - *The geographical layer for the source geography.*
-- geoginst_1_year - *The census year for the source geography.*
-- geoginst_2_area - *The geographical layer for the target geography.*
-- geoginst_2_year - *The census year for the target geography.*
+- lut_id_lower `(varchar(100)` - *All the proportional lookup tables in the database have lowercase names.*
+- geoginst_1_area `(varchar(50)` - *The geographical layer for the source geography.*
+- geoginst_1_year `(smallint)` - *The census year for the source geography.*
+- geoginst_2_area `(varchar(50)` - *The geographical layer for the target geography.*
+- geoginst_2_year `(smallint)` - *The census year for the target geography.*
 
 The first column allows tables to be more easily identified.  
 The last four columns help with filtering.
