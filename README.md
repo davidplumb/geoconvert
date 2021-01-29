@@ -91,8 +91,44 @@ New column added to help identify columns in `dbo.lut_postcode15jul` (currently 
 <hr />
 
 ### `dbo.lut_postcode15jul`
+New column added to help identify columns in `dbo.lut_postcode15jul` (currently required for the API):
 
-Unique index added to `pcstrip15jul` to optimise postcode searches.
+- pctrim `(varchar(9))` - *Postcodes trimmed of trailing whitespace and multiple spaces in the middle. It is slightly more complicated than that; see [UK Postcode Formats](###uk-postcode-formats).*
+
+Unique index added to `pcstrip15jul` to optimise **exact** postcode searches.
+
+Unique index added to `pctrim` to optimise **wildcarded** postcode searches.
+
+
+<hr />
+<br />
+
+### UK Postcode Formats
+
+<details>
+  <summary>Click to see more...</summary>
+
+  As stated in [this StackOverflow answer](https://stackoverflow.com/a/1013191/6649086), UK postcodes *should* always end in `digit-letter-letter`.  
+  However, there are 416 Scottish postcodes in the ONSPD that don't follow this structure, e.g. 'EH27 8DAA' and 'DG8 6TBB'.
+
+  I decided to update the `pcdtrim` column using the following SQL to convert over 99.97% correctly and then deal with the outliers afterwards:
+
+  ```sql
+  update dbo.lut_postcode15jul
+  set pctrim = concat(left(pcstrip15jul, length(pcstrip15jul)-3), ' ', right(pcstrip15jul, 3));
+  ```
+
+  Then I used the following RegEx to find all postcodes that ended in `letter-letter-letter` using the following query:
+  
+  ```sql
+  select regexp_matches(pctrim, '^(.*)([A-Z][A-Z][A-Z])$', 'g')
+  from dbo.lut_postcode15jul;
+  ```
+  
+  I wrote scripts to update these to move the space from the fourth-to-last character to being the fifth-to-last, e.g.  
+  'EH278 DAA' -> 'EH27 8DAA'  
+  'DG86 TBB' -> 'DG8 6TBB'
+</details>
 
 <hr />
 <br />
