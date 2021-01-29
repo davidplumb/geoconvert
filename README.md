@@ -86,7 +86,7 @@ The last four columns help with filtering.
 
 New column added to help identify columns in `dbo.lut_postcode15jul` (currently required for the API):
 
-- geoginst_lower - *All the columns in `dbo.lut_postcode15jul` have lowercase names.*
+- geoginst_lower `(varchar(50))` - *All the columns in `dbo.lut_postcode15jul` have lowercase names.*
 
 <hr />
 
