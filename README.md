@@ -93,7 +93,7 @@ New column added to help identify columns in `dbo.lut_postcode15jul` (currently 
 ### `dbo.lut_postcode15jul`
 New column added to help identify columns in `dbo.lut_postcode15jul` (currently required for the API):
 
-- pctrim `(varchar(9))` - *Postcodes trimmed of trailing whitespace and multiple spaces in the middle. It is slightly more complicated than that; see [UK Postcode Formats](###uk-postcode-formats).*
+- pctrim `(varchar(9))` - *Postcodes trimmed of trailing whitespace and multiple spaces in the middle. It is slightly more complicated than that; see [UK Postcode Formats](#uk-postcode-formats).*
 
 Unique index added to `pcstrip15jul` to optimise **exact** postcode searches.
 
