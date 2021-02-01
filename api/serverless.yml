@@ -39,3 +39,11 @@ functions:
           path: /postcode
           method: POST
           cors: true
+  postcodewildcard:
+    handler: handler.postcodewildcard
+    warmup: true
+    events:
+      - http:
+          path: /postcodewildcard
+          method: POST
+          cors: true
